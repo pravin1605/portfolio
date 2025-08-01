@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   'Full Stack Developer',
   'Mobile App Developer',
   'Web Developer',
-  'Frontend Developer',
+  
   'SQL Database Designer',
   'Tech Enthusiast',
   'UI/UX Explorer',
