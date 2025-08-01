@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pravin Rokade | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assest/logo02.png" alt="Logo" class="logo-img" id="logo-img">
+                Pravin Rokade
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <canvas id="bg-canvas"></canvas>
+            <div class="hero-container">
+                <div class="hero-image">
+                    <img src="assest/pravinimage01a.png" alt="Pravin Rokade">
+                </div>
+                <div class="hero-content">
+                    <p class="hero-intro">Hello, I'm</p>
+                    <h1>Pravin Nitin Rokade</h1>
+                    <h2><span class="typing-text"></span></h2>
+                    <a href="#projects" class="cta-button">View My Work</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <section id="about">
+                <h2>About Me</h2>
+                <div class="about-container">
+                    <div class="about-image">
+                        <img src="assest/pravinimage02.jpg" alt="Pravin Rokade">
+                    </div>
+                    <div class="about-content">
+                        <h3>🚀 My Developer Journey</h3>
+                        <p>Hello! I'm Pravin Nitin Rokade, a Computer Engineering student at ViMEET, Mumbai University, with a deep passion for building impactful software and solving real-world problems through code.</p>
+                        <p>My journey began with a simple curiosity: &quot;How do apps actually work?&quot; That curiosity turned into a strong foundation in full-stack development, mobile applications, and software engineering principles. Over time, I transformed this interest into real-world experience through hands-on projects and competitive events.</p>
+                        <button class="cta-button-small" id="openAboutMeModal">Read More</button>
+                    </div>
+                </div>
+            </section>
+            <section id="education">
+                <h2>Education</h2>
+                <div class="education-timeline">
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>BE in Computer Engineering</h3>
+                            <p><a href="https://vishwaniketan.edu.in/" target="_blank">VIMEET Engineering, Mumbai University</a></p>
+                            <span class="timeline-date">2023 - 2026 (In Progress)</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>HSC (Higher Secondary Certificate)</h3>
+                            <p><a href="https://www.kbpcollegevashi.edu.in/" target="_blank">Karmaveer Bhaurao Patil College, Navi Mumbai</a></p>
+                            <span class="timeline-date">2021 - 2022</span>
+                            <button class="cta-button-small" id="openHscModal">View Marksheet</button>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>SSC (Secondary School Certificate)</h3>
+                            <p><a href="https://www.bvpjrnm.edu.in/" target="_blank">Bharati Vidyapeeth Prashala & Jr. College</a></p>
+                            <span class="timeline-date">2019 - 2020</span>
+                            <button class="cta-button-small" id="openSscModal">View Marksheet</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category animate-on-scroll" data-tilt>
+                        <h3>Languages & Frameworks</h3>
+                        <ul>
+                            <li>Java, Python, C</li>
+                            <li>HTML, CSS, JavaScript</li>
+                            <li>Flutter</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category animate-on-scroll" data-tilt>
+                        <h3>Databases & Querying</h3>
+                        <ul>
+                            <li>MySQL, Firebase, MongoDB</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category animate-on-scroll" data-tilt>
+                        <h3>Tools & Platforms</h3>
+                        <ul>
+                            <li>Git, VS Code</li>
+                            <li>IntelliJ IDEA, Android Studio</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category animate-on-scroll" data-tilt>
+                        <h3>Developer Concepts</h3>
+                        <ul>
+                            <li>Manual Testing</li>
+                            <li>CI/CD Basics</li>
+                            <li>Reporting & Visualization</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience">
+                <h2>Professional Experience</h2>
+                <div class="experience-container">
+                    <div class="experience-image">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1974" alt="Professional Work Environment">
+                    </div>
+                    <div class="experience-details">
+                        <h3>Web Developer Intern</h3>
+                        <h4><a href="https://www.dses.in/" target="_blank">Dnyanda Sustainable Engineering Solutions Pvt. Ltd.</a></h4>
+                        <p class="experience-duration"><i class="fas fa-calendar-alt"></i> 13th June 2025 – 12th July 2025 | Remote</p>
+                        <p>Completed a 1-month internship contributing to the design, development, and deployment of a live product in a collaborative team environment.</p>
+                        <button class="cta-button-small" id="openExperienceModal">Read More</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="showcase-card">
+                        <div class="showcase-image-container" data-lightbox-img="assest/project01image.png">
+                            <img src="assest/project01image.png" alt="GiggleGossipe App" class="showcase-main-img">
+                        </div>
+                        <div class="showcase-info">
+                            <h3>GiggleGossipe – Real-Time Chat App</h3>
+                            <p>A dynamic real-time chat application built using Flutter and Firebase.</p>
+                            <button class="cta-button-small" id="openProjectModal1">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-card">
+                        <div class="showcase-image-container" data-lightbox-img="assest/hmsimage.png">
+                            <img src="assest/hmsimage.png" alt="Hospital Management System" class="showcase-main-img">
+                        </div>
+                        <div class="showcase-info">
+                            <h3>Hospital Management System (HMS)</h3>
+                            <p>A desktop system to streamline hospital operations using Java and MySQL.</p>
+                            <button class="cta-button-small" id="openProjectModal2">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-card">
+                        <div class="showcase-image-container" data-lightbox-img="assest/project03image.png">
+                            <img src="assest/project03image.png" alt="Secure Login Form" class="showcase-main-img">
+                        </div>
+                        <div class="showcase-info">
+                            <h3>Login & Authentication System</h3>
+                            <p>A secure login system for desktop apps using Python's Tkinter and MySQL.</p>
+                            <button class="cta-button-small" id="openProjectModal3">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="awards">
+                <h2>Awards & Recognition</h2>
+                <div class="awards-container">
+                    <button class="scroll-btn left" id="scroll-left"><i class="fas fa-chevron-left"></i></button>
+                    <div class="awards-grid" id="awards-grid">
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/csmuimage01.jpeg">
+                                <img src="assest/csmuimage01.jpeg" alt="Code Automata '25 Winning Team" class="showcase-main-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>First Prize – Code Automata 2025</h3>
+                                <p class="organizer">Chhatrapati Shivaji Maharaj Institute of Technology</p>
+                                <button class="cta-button-small" id="openModalBtn1">Read More</button>
+                            </div>
+                        </div>
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/Dypatilimage01.jpeg">
+                                <img src="assest/Dypatilimage01.jpeg" alt="Technovate 2025 Winning Team" class="showcase-main-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>Winner – Technovate 2025</h3>
+                                <p class="organizer">Ramrao Adik Institute of Technology, DY Patil University</p>
+                                <button class="cta-button-small" id="openModalBtn2">Read More</button>
+                            </div>
+                        </div>
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/Dmimage02.jpeg">
+                                <img src="assest/Dmimage02.jpeg" alt="ELECTROWIZ 25 Certificate" class="showcase-main-img showcase-certificate-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>First Prize – ELECTROWIZ 2025</h3>
+                                <p class="organizer">Datta Meghe College of Engineering (DMCE)</p>
+                                <button class="cta-button-small" id="openModalBtn3">Read More</button>
+                            </div>
+                        </div>
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/petimage02.jpg">
+                                <img src="assest/petimage02.jpg" alt="React Native VAP Team" class="showcase-main-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>Runner-Up – React Native VAP</h3>
+                                <p class="organizer">Vishwaniketan Institute of Technology, Khalapur</p>
+                                <button class="cta-button-small" id="openModalBtn4">Read More</button>
+                            </div>
+                        </div>
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/vicharimage01.jpeg">
+                                <img src="assest/vicharimage01.jpeg" alt="Magazine Feature">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>Featured in 'Vichar' Magazine</h3>
+                                <p class="organizer">Dept. of Computer Engineering, ViMEET</p>
+                                <button class="cta-button-small" id="openModalBtn5">Read More</button>
+                            </div>
+                        </div>
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/award06.jpg">
+                                <img src="assest/award06.jpg" alt="Academic Excellence Certificate" class="showcase-main-img showcase-certificate-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>Certificate of Appreciation</h3>
+                                <p class="organizer">Academic Excellence (2023-24)</p>
+                                <button class="cta-button-small" id="openModalBtn6">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="scroll-btn right" id="scroll-right"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <section id="certifications">
+                <h2>Certifications</h2>
+                <div class="awards-container">
+                    <button class="scroll-btn left" id="cert-scroll-left"><i class="fas fa-chevron-left"></i></button>
+                    <div class="awards-grid" id="certifications-grid">
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/appdevlopmentceartificate01.jpg">
+                                <img src="assest/appdevlopmentceartificate01.jpg" alt="Flutter Certification" class="showcase-main-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>Mobile App Development using Flutter</h3>
+                                <p class="organizer">InLustro (Jan 2024)</p>
+                                <button class="cta-button-small" id="openCertModal1">Read More</button>
+                            </div>
+                        </div>
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/webdevlopmentceartificate02.jpg">
+                                <img src="assest/webdevlopmentceartificate02.jpg" alt="Web Development Certification" class="showcase-main-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>Web Development</h3>
+                                <p class="organizer">Sonsvels Solution (July 2023)</p>
+                                <button class="cta-button-small" id="openCertModal2">Read More</button>
+                            </div>
+                        </div>
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/iotceartificate03.jpg">
+                                <img src="assest/iotceartificate03.jpg" alt="Robotics Certification" class="showcase-main-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>Robotics and Automation with Arduino</h3>
+                                <p class="organizer">India First Robotics (March 2023)</p>
+                                <button class="cta-button-small" id="openCertModal3">Read More</button>
+                            </div>
+                        </div>
+                        <div class="showcase-card">
+                            <div class="showcase-image-container" data-lightbox-img="assest/ceartficateimagemodel04.jpg">
+                                <img src="assest/ceartficateimagemodel04.jpg" alt="Electrowiz Program" class="showcase-main-img">
+                            </div>
+                            <div class="showcase-info">
+                                <h3>Electrowiz 2025 Program</h3>
+                                <p class="organizer">IETE – Datta Meghe College</p>
+                                <button class="cta-button-small" id="openCertModal4">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="scroll-btn right" id="cert-scroll-right"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Get In Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <img src="assest/logo02.png" alt="Logo" class="contact-logo">
+                        <h3>Pravin Rokade</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> CBD Belapur, Navi Mumbai - 400614</p>
+                        <p><i class="fas fa-envelope"></i> pravinrokade1605@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +91 7498362160</p>
+                    </div>
+                    <form id="contact-form" action="https://formspree.io/f/xblkybgk" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" placeholder="Your Name" required>
+                            <span class="error-message" id="name-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="_replyto" id="email" placeholder="Your Email" required>
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                            <span class="error-message" id="message-error"></span>
+                        </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/pravin-rokade-1a9829285/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/pravin1605" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://leetcode.com/u/pravinrokade1605/" target="_blank"><i class="fas fa-code"></i></a>
+        </div>
+        <p>&copy; <span id="footer-year"></span> Pravin Rokade. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Logo Modal -->
+    <div id="logoModal" class="modal">
+        <div class="modal-content modal-image">
+            <div class="modal-header">
+                <h2>PNR</h2>
+                <span class="close-btn" id="closeLogoModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <img src="assest/logo02.png" alt="Full Logo" class="full-logo-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Image Gallery -->
+    <div id="lightbox" class="modal lightbox">
+        <span class="close-btn lightbox-close" id="lightbox-close">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" alt="Full-size image">
+    </div>
+
+    <!-- Award Modals -->
+    <div id="awardModal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>First Prize – Code Automata '25</h2>
+                <span class="close-btn" id="closeBtn1">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/csmuimage02.jpeg" alt="Trophy">
+                    <img src="assest/csmuimage04.jpeg" alt="Certificate">
+                </div>
+                <div class="modal-text">
+                    <h4>Overview</h4>
+                    <p>Led a high-performing team to victory at the national-level 24-hour hackathon, competing against talented teams from across the country.</p>
+                    <h4>Responsibilities as Team Lead:</h4>
+                    <ul>
+                        <li>Led end-to-end project execution, from brainstorming to final pitch.</li>
+                        <li>Developed both frontend and backend modules for full-stack integration.</li>
+                        <li>Managed team coordination using Git and cloud-based tools.</li>
+                    </ul>
+                    <p class="quote"><em>“This achievement not only reflects our technical abilities but also our commitment to problem-solving under pressure, teamwork, and delivering quality outcomes.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="awardModal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Winner – Technovate 2025</h2>
+                <span class="close-btn" id="closeBtn2">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/Dypatilimage03.jpeg" alt="Certificate">
+                    <img src="assest/Dypatilimage02.jpeg" alt="Event Banners">
+                </div>
+                <div class="modal-text">
+                    <h4>Overview</h4>
+                    <p>Achieved First Position in the Software Project category at Technovate 2025, a prestigious intercollegiate tech event. Our solution stood out for its technical depth and practical impact.</p>
+                    <h4>Team & Responsibilities:</h4>
+                    <ul>
+                        <li><b>Pravin Rokade</b> – Full-Stack Developer</li>
+                        <li><b>Mayuresh Kadav</b> – Backend Developer</li>
+                        <li><b>Sourabh Singh</b> – Frontend & UI/UX</li>
+                        <li><b>Vaishnav Patil</b> – Project Analyst</li>
+                    </ul>
+                    <p class="quote"><em>“This experience was a reminder that with passion, planning, and teamwork, we can transform ideas into impactful solutions.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="awardModal3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>First Prize – ELECTROWIZ 25</h2>
+                <span class="close-btn" id="closeBtn3">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/Dmimage02.jpeg" alt="Certificate">
+                </div>
+                <div class="modal-text">
+                    <h4>Overview</h4>
+                    <p>Secured 1st Prize in the Software Category at ELECTROWIZ 25, a prestigious national-level hackathon. Our team developed a working prototype that stood out for its innovation.</p>
+                    <h4>Team & Responsibilities:</h4>
+                    <ul>
+                        <li><b>Pravin Rokade</b> – Full-Stack Developer</li>
+                        <li><b>Mayuresh Kadav</b> – Backend & DevOps</li>
+                        <li><b>Vaishnav Patil</b> – Analyst & Testing</li>
+                        <li><b>Sourabh Singh</b> – UI/UX & Frontend</li>
+                    </ul>
+                    <p class="quote"><em>“Winning at ELECTROWIZ 25 was not just about the prize, but about collaboration, creativity, and proving what a focused team can achieve under pressure.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="awardModal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Runner-Up – React Native VAP</h2>
+                <span class="close-btn" id="closeBtn4">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/petawardimg01.jpg" alt="Certificate of Merit">
+                </div>
+                <div class="modal-text">
+                    <h4>Description</h4>
+                    <p>Secured the Runner-Up position in the React Native Value Addition Program, an intensive, hands-on learning initiative focused on modern mobile app development using React Native.</p>
+                    <h4>Team Members:</h4>
+                    <ul>
+                        <li>Pravin Rokade – Frontend Developer</li>
+                        <li>Vaishnav Patil</li>
+                        <li>Vedant Patil</li>
+                        <li>Pranjal Kadam</li>
+                    </ul>
+                    <p class="quote"><em>“This recognition is a result of focused learning, teamwork, and real-world application of concepts in mobile development — a key milestone in my app development journey.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="awardModal5" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Featured in 'Vichar – Edition II'</h2>
+                <span class="close-btn" id="closeBtn5">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/vicharimage01.jpeg" alt="Vichar Magazine Feature"> 
+                </div>
+                <div class="modal-text">
+                    <h4>Description</h4>
+                    <p>Honored to be featured in the Excellence Section of the official department magazine for securing 1st Place at the National Level Project Competition – ELECTROWIZ 2025.</p>
+                    <h4>Team Unity Members:</h4>
+                    <ul>
+                        <li>Pravin Rokade</li>
+                        <li>Mayuresh Kadav</li>
+                        <li>Sourabh Singh</li>
+                        <li>Vaishnav Patil</li>
+                    </ul>
+                    <p class="quote"><em>“Being recognized not only for the win but for the innovation and effort behind it was a truly rewarding experience — a proud moment in our engineering journey.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="awardModal6" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Certificate of Appreciation – Academic Excellence</h2>
+                <span class="close-btn" id="closeBtn6">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/award06.jpg" alt="Certificate of Appreciation">
+                </div>
+                <div class="modal-text">
+                    <h4>Description</h4>
+                    <p>Awarded the Certificate of Appreciation for securing the <strong>Highest Percentage – 78.30%</strong> in the Computer Engineering Department for the academic year 2023–24.</p>
+                    <h4>This recognition highlights my:</h4>
+                    <ul>
+                        <li>Strong academic consistency and discipline</li>
+                        <li>Dedication to mastering technical and theoretical knowledge</li>
+                        <li>Active participation in a rigorous academic environment</li>
+                    </ul>
+                    <p class="quote"><em>“This achievement is a reflection of focused learning, determination, and the pursuit of excellence throughout my engineering journey.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modals -->
+    <div id="projectModal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>GiggleGossipe – Real-Time Chat App</h2>
+                <span class="close-btn" id="closeProjectBtn1">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text">
+                    <h4>Project Overview</h4>
+                    <p>Gigglegossipe is a dynamic real-time chat application built using Flutter and Firebase, focusing on secure, instant communication with a modern and intuitive user interface. It showcases proficiency in cross-platform mobile development and cloud-based backend integration.</p>
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>✅ Real-Time Messaging with Firebase Cloud Firestore</li>
+                        <li>✅ Secure User Authentication (Email/Password)</li>
+                        <li>✅ Push Notifications via Firebase Cloud Messaging</li>
+                        <li>✅ Dark Mode Support for improved UX</li>
+                        <li>✅ Online/Offline User Status and Timestamps</li>
+                    </ul>
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li><b>Frontend:</b> Flutter (Dart)</li>
+                        <li><b>Backend:</b> Firebase (Firestore, Auth, FCM)</li>
+                        <li><b>Repo:</b> <a href="https://github.com/pravin1605/Gigglegossipe" target="_blank">github.com/pravin1605/Gigglegossipe</a></li>
+                    </ul>
+                    <p class="quote"><em>“Gigglegossipe is a lightweight yet powerful chat app that reflects real-time interaction and efficient mobile app design — built with scalability and user experience at its core.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="projectModal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Hospital Management System (HMS)</h2>
+                <span class="close-btn" id="closeProjectBtn2">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text">
+                    <h4>Project Overview</h4>
+                    <p>Developed a Hospital Management System (HMS) to streamline and automate core hospital operations such as patient registration, doctor allocation, appointment scheduling, billing, and record management.</p>
+                    <h4>Key Functionalities:</h4>
+                    <ul>
+                        <li>👨‍⚕️ Patient & Doctor Registration</li>
+                        <li>📅 Appointment Scheduling</li>
+                        <li>💳 Billing & Payment Records</li>
+                        <li>📁 Patient Medical History Tracking</li>
+                        <li>🔒 Admin Login & Role-Based Access Control</li>
+                    </ul>
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li><b>Language:</b> Java (Core, OOPs, JDBC)</li>
+                        <li><b>Database:</b> MySQL</li>
+                        <li><b>IDE:</b> IntelliJ IDEA</li>
+                    </ul>
+                    <p class="quote"><em>“This HMS project enhanced my understanding of backend logic, relational databases, and real-world CRUD operations—essential for building scalable and maintainable systems.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="projectModal3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login & Authentication System</h2>
+                <span class="close-btn" id="closeProjectBtn3">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text">
+                    <h4>Project Overview</h4>
+                    <p>Developed a Login and User Authentication System using Python’s Tkinter library for the graphical user interface and MySQL as the backend database for secure data storage and retrieval.</p>
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>🔐 Secure Login & User Registration</li>
+                        <li>❓ Forgot Password & Secure Reset</li>
+                        <li>🖥️ Modern GUI Interface with Tkinter</li>
+                        <li>💾 Data Integrity with MySQL</li>
+                    </ul>
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li><b>Language:</b> Python</li>
+                        <li><b>GUI:</b> Tkinter</li>
+                        <li><b>Database:</b> MySQL</li>
+                        <li><b>IDE:</b> Visual Studio Code</li>
+                    </ul>
+                    <p class="quote"><em>“This project strengthened my understanding of GUI development, database integration, and secure authentication — skills essential for building user-centric desktop applications.”</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HSC Marksheet Modal -->
+    <div id="hscModal" class="modal">
+        <div class="modal-content modal-document">
+            <div class="modal-header">
+                <h2>HSC Marksheet</h2>
+                <span class="close-btn" id="closeHscModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe src="assest/12th marksheet pdf.pdf" width="100%" height="600px"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- SSC Marksheet Modal -->
+    <div id="sscModal" class="modal">
+        <div class="modal-content modal-document">
+            <div class="modal-header">
+                <h2>SSC Marksheet</h2>
+                <span class="close-btn" id="closeSscModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe src="assest/10th marksheet.pdf" width="100%" height="600px"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Modal -->
+    <div id="experienceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Web Developer Intern</h2>
+                <span class="close-btn" id="closeExperienceModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text">
+                    <h4>Overview</h4>
+                    <p>Completed a 1-month internship as a Web Developer Intern at DSES, where I contributed to the design, development, integration, and deployment of a live product in a collaborative team environment.</p>
+                    <h4>Key Responsibilities:</h4>
+                    <ul>
+                        <li>Collaborated with the team on frontend and backend development tasks.</li>
+                        <li>Participated in UI design, integration testing, and live deployment phases.</li>
+                        <li>Followed best practices for clean coding, version control, and remote collaboration.</li>
+                        <li>Delivered tasks within deadlines under mentor supervision.</li>
+                    </ul>
+                    <p class="quote"><em>“This internship allowed me to apply my technical knowledge in a professional environment and helped me grow both as a developer and as a team contributor.”</em></p>
+                    <div class="experience-footer-modal">
+                        <button class="cta-button-small" id="openOfferLetterModal">View Offer Letter</button>
+                        <button class="cta-button-small" id="openCompletionModal">View Completion Certificate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offer Letter Modal -->
+    <div id="offerLetterModal" class="modal">
+        <div class="modal-content modal-document">
+            <div class="modal-header">
+                <h2>Offer Letter</h2>
+                <span class="close-btn" id="closeOfferLetterModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe src="assest/Appointment Letter – Web Developer Intern – DSES – Pravin (1).pdf" width="100%" height="600px"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Completion Certificate Modal -->
+    <div id="completionModal" class="modal">
+        <div class="modal-content modal-document">
+            <div class="modal-header">
+                <h2>Completion Certificate</h2>
+                <span class="close-btn" id="closeCompletionModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe src="assest/DSESIC0035 - Pravin Rokade (1).pdf" width="100%" height="600px"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certification Modals -->
+    <div id="certModal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📱 Cross-Platform Mobile App Development using Flutter</h2>
+                <span class="close-btn" id="closeCertBtn1">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/appdevlopmentceartificate01.jpg" alt="Flutter Certification">
+                </div>
+                <div class="modal-text">
+                    <p><strong>Program:</strong> Value Added Program in Flutter (2024)</p>
+                    <p><strong>Organization:</strong> InLustro (in collaboration with Vishwaniketan Institute)</p>
+                    <p><strong>Duration:</strong> January 2024 – April 2024</p>
+                    <p><strong>Role:</strong> Trainee Developer</p>
+                    <p><strong>Outcome:</strong> Completion Certificate with Exceptional Performance</p>
+                    <h4>🧠 Description:</h4>
+                    <p>Completed a 3-month value-added program on the Flutter framework, focusing on building responsive, cross-platform mobile applications for both Android and iOS. The training emphasized real-world development with hands-on project implementation.</p>
+                    <h4>💡 Key Concepts Learned:</h4>
+                    <ul>
+                        <li>Flutter Architecture: Widgets, State Management, Material & Cupertino UI</li>
+                        <li>Dart Programming Language: Syntax, OOP, Functional Programming</li>
+                        <li>Cross-Platform Techniques: Single codebase deployment</li>
+                        <li>Backend Integration: REST APIs & Firebase</li>
+                        <li>Live Project Demo: Built and deployed a working mobile app prototype</li>
+                    </ul>
+                    <h4>🛠️ Tools & Technologies:</h4>
+                    <ul>
+                        <li>Flutter</li>
+                        <li>Dart</li>
+                        <li>Firebase</li>
+                        <li>Visual Studio Code</li>
+                        <li>Git</li>
+                        <li>Android Emulator</li>
+                    </ul>
+                    <h4>🎯 Skills Gained:</h4>
+                    <ul>
+                        <li>Mobile UI/UX Design</li>
+                        <li>Agile Development Practices</li>
+                        <li>API Handling & JSON Parsing</li>
+                        <li>Debugging & Optimization in Flutter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="certModal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💻 Certificate of Achievement – Web Development</h2>
+                <span class="close-btn" id="closeCertBtn2">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/webdevlopmentceartificate02.jpg" alt="Web Development Certification">
+                </div>
+                <div class="modal-text">
+                    <p><strong>Organization:</strong> Sonsvels Solution (ISO 9001:2015 Certified)</p>
+                    <p><strong>Date of Completion:</strong> 12 July 2023</p>
+                    <p><strong>Role:</strong> Trainee (Web Development)</p>
+                    <p><strong>Certificate No.:</strong> 3798/0221/0469</p>
+                    <h4>🧠 Description:</h4>
+                    <p>Completed intensive training in full-stack web development, covering modern frontend and backend technologies. This program focused on industry-relevant tools and practices in web application development, delivered under ISO-certified curriculum.</p>
+                    <h4>🔍 Key Topics Covered:</h4>
+                    <ul>
+                        <li>HTML5, CSS3, JavaScript (DOM, Events, ES6)</li>
+                        <li>Responsive Design using Bootstrap</li>
+                        <li>Version Control with Git/GitHub</li>
+                        <li>Introduction to Backend: Node.js & Express (Basics)</li>
+                        <li>Fundamentals of Web Hosting and Deployment</li>
+                    </ul>
+                    <h4>🛠️ Tools & Technologies:</h4>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Git</li>
+                        <li>Visual Studio Code</li>
+                    </ul>
+                    <h4>🎯 Skills Gained:</h4>
+                    <ul>
+                        <li>Building interactive and responsive websites</li>
+                        <li>Code versioning and collaboration</li>
+                        <li>Debugging, testing, and deploying static pages</li>
+                        <li>Understanding client-server interactions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="certModal3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🤖 Certificate of Participation – Robotics & Automation</h2>
+                <span class="close-btn" id="closeCertBtn3">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/iotceartificate03.jpg" alt="Robotics Certification">
+                </div>
+                <div class="modal-text">
+                    <p><strong>Organizer:</strong> India First Robotics (Innovation and Research LLP)</p>
+                    <p><strong>Date:</strong> 20 – 25 March 2023</p>
+                    <p><strong>Program:</strong> Robotics and Automation with Arduino Microcontroller</p>
+                    <p><strong>Role:</strong> Participant</p>
+                    <h4>🧠 Description:</h4>
+                    <p>Participated in a national-level, hands-on training program focused on robotics, automation, and embedded systems using the Arduino platform. The course was designed to build practical knowledge in building, coding, and deploying smart systems and robotic units.</p>
+                    <h4>🔍 Key Topics Covered:</h4>
+                    <ul>
+                        <li>Arduino Programming using C/C++</li>
+                        <li>Sensor Integration (Ultrasonic, IR, etc.)</li>
+                        <li>Motor Control and Actuation</li>
+                        <li>Circuit Building and Breadboarding</li>
+                        <li>Basics of Automation and Mechatronics</li>
+                    </ul>
+                    <h4>🛠️ Tools & Technologies:</h4>
+                    <ul>
+                        <li>Arduino UNO</li>
+                        <li>C/C++</li>
+                        <li>Embedded Systems</li>
+                        <li>IR Sensors</li>
+                        <li>Servo Motors</li>
+                    </ul>
+                    <h4>🎯 Skills Gained:</h4>
+                    <ul>
+                        <li>Developed mini robotics projects using Arduino</li>
+                        <li>Understood sensor-based automation workflows</li>
+                        <li>Gained hands-on experience in hardware-software integration</li>
+                        <li>Strengthened skills in logical thinking and problem-solving in embedded environments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="certModal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏆 Certificate of Appreciation – National-Level Project Competition Winner</h2>
+                <span class="close-btn" id="closeCertBtn4">&times;</span>
+            </div>
+            <div class="modal-body modal-two-column">
+                <div class="modal-images">
+                    <img src="assest/ceartficateimagemodel04.jpg" alt="Electrowiz Program Certificate">
+                </div>
+                <div class="modal-text">
+                    <p><strong>Awarded by:</strong> Vishwaniketan’s iMEET, Khalapur</p>
+                    <p><strong>Accreditation:</strong> NAAC A+</p>
+                    <p><strong>Event:</strong> Electrowiz 2025 – National Level Project Competition</p>
+                    <p><strong>Organizer:</strong> IETE – Datta Meghe College of Engineering, Navi Mumbai</p>
+                    <p><strong>Team:</strong> Team Unity</p>
+                    <p><strong>Achievement:</strong> 1st Place – Software Category</p>
+                    <h4>📌 Description:</h4>
+                    <p>Awarded the Certificate of Appreciation by the Computer Engineering Department at VIMEET, Vishwaniketan, for proudly representing the college and securing First Position in the Software Category at the National-Level Project Competition – Electrowiz 2025, hosted by IETE–DMCE.</p>
+                    <p>This recognition was given for our outstanding technical performance, innovation, and sportsmanship on an external stage, bringing pride and honor to our institution.</p>
+                    <h4>👨‍💻 Team Unity Members:</h4>
+                    <ul>
+                        <li>Pravin Rokade</li>
+                        <li>Mayuresh Kadav</li>
+                        <li>Sourabh Singh</li>
+                        <li>Vaishnav Patil</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Me Modal -->
+    <div id="aboutMeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>About Pravin Rokade</h2>
+                <span class="close-btn" id="closeAboutMeModal">&times;</span>
+            </div>
+            <div class="modal-body about-modal-body-single-column">
+                <div class="modal-text">
+                    <h3>🚀 My Developer Journey</h3>
+                    <p>Hello! I'm Pravin Rokade, a Computer Engineering student at ViMEET, Mumbai University, with a deep passion for building impactful software and solving real-world problems through code.</p>
+                    <p>My journey began with a simple curiosity: &quot;How do apps actually work?&quot; That curiosity turned into a strong foundation in full-stack development, mobile applications, and software engineering principles. Over time, I transformed this interest into real-world experience through hands-on projects and competitive events.</p>
+                    <p>From developing a secure Hospital Management System using Java and MySQL, to creating a real-time Flutter + Firebase chat app, I&apos;ve consistently applied classroom concepts to practical solutions. My dedication and teamwork have earned me top positions in national-level hackathons, where I thrived under pressure and delivered results.</p>
+                    <p>Alongside my academic journey, I&apos;ve also completed a professional Web Development Internship, where I contributed to production-level websites and practiced debugging, UI/UX design, and feature implementation.</p>
+                    <p>🔧 My Technical Toolkit: Java, Flutter, Firebase, MySQL, Git, HTML/CSS/JavaScript, Python, MongoDB, and basic software testing principles.</p>
+                    <p>💡 What sets me apart? I combine a developer&apos;s logic with a designer&apos;s creativity. I enjoy building smooth, user-friendly applications while focusing on performance and maintainability. I&apos;m also a strong communicator and team player who values clean code, documentation, and collaborative problem-solving.</p>
+                    <p>🎯 My Vision: To become a versatile software engineer who builds meaningful, efficient, and user-centered solutions across domains. I aim to keep learning, growing, and making a positive impact through technology.</p>
+                    <p>Let&apos;s connect, collaborate, and create something extraordinary!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
