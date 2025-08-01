@@ -27,7 +27,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Typing Animation for Hero Section
-    const texts = ['Full Stack Developer', 'Mobile App Developer', 'Tech Enthusiast'];
+  
+  const texts = [
+  'Full Stack Developer',
+  'Mobile App Developer',
+  'Web Developer',
+  'Frontend Developer',
+  'SQL Database Designer',
+  'Tech Enthusiast',
+  'UI/UX Explorer',
+  'Software Tester',
+  'Problem Solver',
+  'Data-Driven Thinker'
+];
+
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
