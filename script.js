@@ -1,32 +1,217 @@
+// Helper function to detect WebGL support
+function detectWebGLSupport() {
+    try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        return gl ? 'WebGL 1.0' : 'Not Supported';
+    } catch (e) {
+        return 'Not Supported';
+    }
+}
+
+// Function to show stats in a modal
+function showPortfolioStatsModal(stats) {
+    let statsModal = document.getElementById('portfolioStatsModal');
+    if (!statsModal) {
+        statsModal = document.createElement('div');
+        statsModal.id = 'portfolioStatsModal';
+        statsModal.className = 'modal';
+        statsModal.innerHTML = `
+            <div class="modal-content" style="max-width: 800px; max-height: 80vh; overflow-y: auto;">
+                <div class="modal-header">
+                    <h2 style="color: #64ffda; margin: 0;">
+                        <i class="fas fa-chart-line"></i> Portfolio Developer Stats
+                    </h2>
+                    <span class="close" id="closeStatsModal" style="color: #aaa; float: right; font-size: 28px; cursor: pointer;">&times;</span>
+                </div>
+                <div class="modal-body" id="statsModalBody">
+                    <!-- Stats content will be inserted here -->
+                </div>
+            </div>
+        `;
+        document.body.appendChild(statsModal);
+
+        document.getElementById('closeStatsModal').addEventListener('click', () => {
+            statsModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        statsModal.addEventListener('click', (e) => {
+            if (e.target === statsModal) {
+                statsModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    let statsHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">';
+    Object.entries(stats).forEach(([key, value]) => {
+        const displayValue = Array.isArray(value) ? value.join(', ') : value;
+        statsHTML += `
+            <div style="background: rgba(100, 255, 218, 0.05); padding: 15px; border-radius: 8px; border-left: 3px solid #64ffda;">
+                <div style="color: #64ffda; font-weight: bold; margin-bottom: 5px;">${key}</div>
+                <div style="color: #8892b0; font-family: 'Fira Code', monospace;">${displayValue}</div>
+            </div>
+        `;
+    });
+    statsHTML += '</div>';
+
+    statsHTML += `
+        <div style="margin-top: 30px; padding: 20px; background: rgba(255, 215, 0, 0.1); border-radius: 8px; border-left: 3px solid #ffd700;">
+            <h3 style="color: #ffd700; margin-top: 0;">🎮 Available Shortcuts:</h3>
+            <ul style="color: #8892b0; margin: 0; padding-left: 20px;">
+                <li><kbd style="background: #0a192f; padding: 2px 6px; border-radius: 3px; color: #64ffda;">Ctrl + Shift + P</kbd> - Show Portfolio Stats</li>
+                <li><kbd style="background: #0a192f; padding: 2px 6px; border-radius: 3px; color: #64ffda;">Cmd + Shift + P</kbd> - Show Portfolio Stats (Mac)</li>
+                <li><kbd style="background: #0a192f; padding: 2px 6px; border-radius: 3px; color: #64ffda;">Escape</kbd> - Close any modal</li>
+                <li><kbd style="background: #0a192f; padding: 2px 6px; border-radius: 3px; color: #64ffda;">Arrow Keys</kbd> - Navigate horizontal sections</li>
+            </ul>
+        </div>
+    `;
+
+    document.getElementById('statsModalBody').innerHTML = statsHTML;
+    statsModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    alert('📊 Portfolio stats opened in modal and logged to console!');
+}
+
+// Function to add stats button
+function addStatsButton() {
+    const statsButton = document.createElement('button');
+    statsButton.innerHTML = '📊 Dev Stats';
+    statsButton.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 9999;
+        background: rgba(100, 255, 218, 0.1);
+        border: 1px solid #64ffda;
+        color: #64ffda;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        opacity: 0.3;
+        transition: opacity 0.3s ease;
+    `;
+    statsButton.addEventListener('mouseenter', () => statsButton.style.opacity = '1');
+    statsButton.addEventListener('mouseleave', () => statsButton.style.opacity = '0.3');
+    statsButton.addEventListener('click', () => {
+        const event = new KeyboardEvent('keydown', {
+            key: 'P',
+            ctrlKey: true,
+            shiftKey: true,
+            bubbles: true
+        });
+        document.dispatchEvent(event);
+    });
+    document.body.appendChild(statsButton);
+}
+
+// Keydown event listener for portfolio stats
+document.addEventListener('keydown', (e) => {
+    console.log('Key pressed:', {
+        key: e.key,
+        code: e.code,
+        ctrlKey: e.ctrlKey,
+        shiftKey: e.shiftKey,
+        altKey: e.altKey,
+        metaKey: e.metaKey
+    });
+
+    const isPortfolioStatsShortcut =
+        (e.ctrlKey && e.shiftKey && (e.key === 'P' || e.key === 'p')) ||
+        (e.metaKey && e.shiftKey && (e.key === 'P' || e.key === 'p')) ||
+        (e.ctrlKey && e.altKey && (e.key === 'P' || e.key === 'p'));
+
+    if (isPortfolioStatsShortcut) {
+        e.preventDefault();
+        let loadTime = 'N/A';
+        if (window.performance && window.performance.timing) {
+            const perfTiming = window.performance.timing;
+            if (perfTiming.loadEventEnd && perfTiming.navigationStart) {
+                loadTime = `${perfTiming.loadEventEnd - perfTiming.navigationStart}ms`;
+            }
+        }
+
+        const stats = {
+            '🚀 Portfolio Version': '2.0.0',
+            '📅 Build Date': new Date().toLocaleDateString(),
+            '💻 Technologies': ['HTML5', 'CSS3', 'JavaScript ES6+', 'Three.js', 'CSS Grid/Flexbox'],
+            '📝 Lines of Code': '~2000+',
+            '⚡ Page Load Time': loadTime,
+            '📱 Screen Resolution': `${window.innerWidth} × ${window.innerHeight}`,
+            '🌐 Viewport': `${document.documentElement.clientWidth} × ${document.documentElement.clientHeight}`,
+            '🎯 Color Depth': `${screen.colorDepth}-bit`,
+            '📊 Pixel Ratio': window.devicePixelRatio || 1,
+            '🔧 Browser': navigator.userAgent.split(' ')[0],
+            '💾 Local Storage': typeof(Storage) !== "undefined" ? 'Supported' : 'Not Supported',
+            '🎮 WebGL Support': detectWebGLSupport(),
+            '📍 Language': navigator.language,
+            '🕒 Current Time': new Date().toLocaleString(),
+            '🎨 Theme': document.body.classList.contains('dark-theme') ? 'Dark' : 'Light'
+        };
+
+        console.clear();
+        console.log('%c🎯 PORTFOLIO DEVELOPER STATS 🎯', 'color: #64ffda; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
+        console.log('%c' + '='.repeat(50), 'color: #64ffda;');
+        console.table(stats);
+
+        console.group('%c🔧 Technical Details', 'color: #ffd700; font-weight: bold;');
+        console.log('%cMemory Usage:', 'color: #00ff00; font-weight: bold;', performance.memory ? {
+            'Used': `${(performance.memory.usedJSHeapSize / 1048576).toFixed(2)} MB`,
+            'Total': `${(performance.memory.totalJSHeapSize / 1048576).toFixed(2)} MB`,
+            'Limit': `${(performance.memory.jsHeapSizeLimit / 1048576).toFixed(2)} MB`
+        } : 'Not available');
+        console.log('%cConnection:', 'color: #00ff00; font-weight: bold;', navigator.connection ? {
+            'Type': navigator.connection.effectiveType,
+            'Downlink': `${navigator.connection.downlink} Mbps`,
+            'RTT': `${navigator.connection.rtt}ms`
+        } : 'Not available');
+        console.log('%cFeatures Detected:', 'color: #00ff00; font-weight: bold;', {
+            'Service Worker': 'serviceWorker' in navigator,
+            'Intersection Observer': 'IntersectionObserver' in window,
+            'Fetch API': 'fetch' in window,
+            'ES6 Modules': 'noModule' in HTMLScriptElement.prototype,
+            'CSS Grid': CSS.supports('display', 'grid'),
+            'CSS Variables': CSS.supports('color', 'var(--test)'),
+            'Animations': 'animate' in document.createElement('div')
+        });
+        console.groupEnd();
+
+        showPortfolioStatsModal(stats);
+    }
+});
+
+// Main DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function () {
+    // Add stats button
+    addStatsButton();
+
     // Loading Screen
     window.addEventListener('load', function() {
         const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.classList.add('fade-out');
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
+        if (loadingScreen) {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
     });
 
     // Visitor Counter (Simulated)
     const visitorCount = document.getElementById('visitor-count');
     if (visitorCount) {
-        // Simulate visitor count - in production, this would come from analytics
         const count = Math.floor(Math.random() * 5000) + 1000;
         setTimeout(() => {
             visitorCount.textContent = count.toLocaleString();
         }, 1000);
     }
 
-    // Theme Toggle (Optional - maintaining current theme)
-  
-
     // Download CV Functionality
     const downloadCV = document.getElementById('download-cv');
     if (downloadCV) {
         downloadCV.addEventListener('click', (e) => {
             e.preventDefault();
-            // In production, replace with actual CV file path
             const cvUrl = 'assest/Pravin_Rokade_Resume.pdf';
             const link = document.createElement('a');
             link.href = cvUrl;
@@ -34,13 +219,11 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            
-            // Show download feedback
+
             const originalText = downloadCV.innerHTML;
             downloadCV.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
             downloadCV.style.background = 'var(--success-color)';
             downloadCV.style.color = 'white';
-            
             setTimeout(() => {
                 downloadCV.innerHTML = originalText;
                 downloadCV.style.background = 'transparent';
@@ -54,27 +237,30 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.getElementById('nav-links');
     const header = document.getElementById('header');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
-
-    // Close mobile menu when a nav link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-    });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    }
 
     // Header Scroll Effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // Typing Animation for Hero Section
     const texts = ['Full Stack Developer', 'Mobile App Developer', 'Tech Enthusiast', 'Problem Solver', 'Team Leader'];
@@ -117,8 +303,6 @@ document.addEventListener('DOMContentLoaded', function () {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                
-                // Trigger skill bar animations
                 if (entry.target.classList.contains('skill-category')) {
                     const skillBars = entry.target.querySelectorAll('.skill-progress');
                     skillBars.forEach(bar => {
@@ -131,22 +315,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }, { threshold: 0.1 });
-
     animateOnScroll.forEach(element => observer.observe(element));
 
     // Skill Filter Functionality
     const skillFilters = document.querySelectorAll('.skill-filter .filter-btn');
     const skillCategories = document.querySelectorAll('.skill-category');
-
     skillFilters.forEach(filter => {
         filter.addEventListener('click', () => {
             const category = filter.getAttribute('data-category');
-            
-            // Update active filter
             skillFilters.forEach(f => f.classList.remove('active'));
             filter.classList.add('active');
-            
-            // Filter skill categories
             skillCategories.forEach(skillCat => {
                 const categories = skillCat.getAttribute('data-category') || 'all';
                 if (category === 'all' || categories.includes(category)) {
@@ -169,16 +347,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Project Filter Functionality
     const projectFilters = document.querySelectorAll('.project-filter .filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
-
     projectFilters.forEach(filter => {
         filter.addEventListener('click', () => {
             const category = filter.getAttribute('data-category');
-            
-            // Update active filter
             projectFilters.forEach(f => f.classList.remove('active'));
             filter.classList.add('active');
-            
-            // Filter project cards
             projectCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
                 if (category === 'all' || cardCategory === category) {
@@ -198,22 +371,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Back to Top Button
     const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTop.style.display = 'flex';
-        } else {
-            backToTop.style.display = 'none';
-        }
-    });
-
-    // Smooth scroll for back to top
-    backToTop.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
         });
-    });
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // Modal Functionality
     function openModal(modalId) {
@@ -221,16 +387,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (modal) {
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
-            
-            // Add entrance animation
             const modalContent = modal.querySelector('.modal-content');
-            modalContent.style.transform = 'translateY(-50px)';
-            modalContent.style.opacity = '0';
-            
-            setTimeout(() => {
-                modalContent.style.transform = 'translateY(0)';
-                modalContent.style.opacity = '1';
-            }, 50);
+            if (modalContent) {
+                modalContent.style.transform = 'translateY(-50px)';
+                modalContent.style.opacity = '0';
+                setTimeout(() => {
+                    modalContent.style.transform = 'translateY(0)';
+                    modalContent.style.opacity = '1';
+                }, 50);
+            }
         }
     }
 
@@ -238,9 +403,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const modal = document.getElementById(modalId);
         if (modal) {
             const modalContent = modal.querySelector('.modal-content');
-            modalContent.style.transform = 'translateY(-50px)';
-            modalContent.style.opacity = '0';
-            
+            if (modalContent) {
+                modalContent.style.transform = 'translateY(-50px)';
+                modalContent.style.opacity = '0';
+            }
             setTimeout(() => {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
@@ -252,7 +418,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoImg = document.getElementById('logo-img');
     const logoModal = document.getElementById('logoModal');
     const closeLogoModal = document.getElementById('closeLogoModal');
-
     if (logoImg && logoModal && closeLogoModal) {
         logoImg.addEventListener('click', () => openModal('logoModal'));
         closeLogoModal.addEventListener('click', () => closeModal('logoModal'));
@@ -263,7 +428,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
     const showcaseImages = document.querySelectorAll('.showcase-image-container');
-
     showcaseImages.forEach(imgContainer => {
         imgContainer.addEventListener('click', () => {
             const imgSrc = imgContainer.getAttribute('data-lightbox-img');
@@ -274,14 +438,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
     if (lightboxClose && lightbox) {
         lightboxClose.addEventListener('click', () => {
             lightbox.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
-
-        // Close lightbox when clicking outside the image
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
                 lightbox.style.display = 'none';
@@ -299,11 +460,9 @@ document.addEventListener('DOMContentLoaded', function () {
         { btn: 'openModalBtn5', modal: 'awardModal5', close: 'closeBtn5' },
         { btn: 'openModalBtn6', modal: 'awardModal6', close: 'closeBtn6' }
     ];
-
     awardModalButtons.forEach(({ btn, modal, close }) => {
         const btnElement = document.getElementById(btn);
         const closeElement = document.getElementById(close);
-        
         if (btnElement) btnElement.addEventListener('click', () => openModal(modal));
         if (closeElement) closeElement.addEventListener('click', () => closeModal(modal));
     });
@@ -314,11 +473,9 @@ document.addEventListener('DOMContentLoaded', function () {
         { btn: 'openProjectModal2', modal: 'projectModal2', close: 'closeProjectBtn2' },
         { btn: 'openProjectModal3', modal: 'projectModal3', close: 'closeProjectBtn3' }
     ];
-
     projectModalButtons.forEach(({ btn, modal, close }) => {
         const btnElement = document.getElementById(btn);
         const closeElement = document.getElementById(close);
-        
         if (btnElement) btnElement.addEventListener('click', () => openModal(modal));
         if (closeElement) closeElement.addEventListener('click', () => closeModal(modal));
     });
@@ -330,11 +487,9 @@ document.addEventListener('DOMContentLoaded', function () {
         { btn: 'openCertModal3', modal: 'certModal3', close: 'closeCertBtn3' },
         { btn: 'openCertModal4', modal: 'certModal4', close: 'closeCertBtn4' }
     ];
-
     certModalButtons.forEach(({ btn, modal, close }) => {
         const btnElement = document.getElementById(btn);
         const closeElement = document.getElementById(close);
-        
         if (btnElement) btnElement.addEventListener('click', () => openModal(modal));
         if (closeElement) closeElement.addEventListener('click', () => closeModal(modal));
     });
@@ -344,11 +499,9 @@ document.addEventListener('DOMContentLoaded', function () {
         { btn: 'openHscModal', modal: 'hscModal', close: 'closeHscModal' },
         { btn: 'openSscModal', modal: 'sscModal', close: 'closeSscModal' }
     ];
-
     educationModals.forEach(({ btn, modal, close }) => {
         const btnElement = document.getElementById(btn);
         const closeElement = document.getElementById(close);
-        
         if (btnElement) btnElement.addEventListener('click', () => openModal(modal));
         if (closeElement) closeElement.addEventListener('click', () => closeModal(modal));
     });
@@ -359,11 +512,9 @@ document.addEventListener('DOMContentLoaded', function () {
         { btn: 'openOfferLetterModal', modal: 'offerLetterModal', close: 'closeOfferLetterModal' },
         { btn: 'openCompletionModal', modal: 'completionModal', close: 'closeCompletionModal' }
     ];
-
     experienceModals.forEach(({ btn, modal, close }) => {
         const btnElement = document.getElementById(btn);
         const closeElement = document.getElementById(close);
-        
         if (btnElement) btnElement.addEventListener('click', () => openModal(modal));
         if (closeElement) closeElement.addEventListener('click', () => closeModal(modal));
     });
@@ -371,7 +522,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // About Me Modal
     const aboutMeBtn = document.getElementById('openAboutMeModal');
     const aboutMeClose = document.getElementById('closeAboutMeModal');
-    
     if (aboutMeBtn) aboutMeBtn.addEventListener('click', () => openModal('aboutMeModal'));
     if (aboutMeClose) aboutMeClose.addEventListener('click', () => closeModal('aboutMeModal'));
 
@@ -379,8 +529,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.modal').forEach(modal => {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                const modalId = modal.id;
-                closeModal(modalId);
+                closeModal(modal.id);
             }
         });
     });
@@ -397,11 +546,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Dynamic Footer Year
     const footerYear = document.getElementById('footer-year');
-    if (footerYear) {
-        footerYear.textContent = new Date().getFullYear();
-    }
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
 
-    // Enhanced Contact Form Validation and Submission
+    // Contact Form Validation and Submission
     const contactForm = document.getElementById('contact-form');
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
@@ -411,8 +558,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const messageInput = document.getElementById('message');
     const submitBtn = document.getElementById('submit-btn');
     const formStatus = document.getElementById('form-status');
-
-    // Error message elements
     const nameError = document.getElementById('name-error');
     const emailError = document.getElementById('email-error');
     const messageError = document.getElementById('message-error');
@@ -427,9 +572,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function hideError(input, errorElement) {
         input.classList.remove('error');
-        if (errorElement) {
-            errorElement.style.display = 'none';
-        }
+        if (errorElement) errorElement.style.display = 'none';
     }
 
     function showFormStatus(message, type) {
@@ -437,11 +580,8 @@ document.addEventListener('DOMContentLoaded', function () {
             formStatus.textContent = message;
             formStatus.className = `form-status ${type}`;
             formStatus.style.display = 'block';
-            
             if (type === 'success') {
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 5000);
+                setTimeout(() => formStatus.style.display = 'none', 5000);
             }
         }
     }
@@ -475,7 +615,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function validatePhone() {
         const value = phoneInput.value.trim();
         if (value && !/^\+?[\d\s\-\(\)]{10,}$/.test(value)) {
-            // Optional field, but if provided should be valid
             return false;
         }
         return true;
@@ -499,13 +638,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return subjectInput.value.trim() !== '';
     }
 
-    // Real-time validation
     if (nameInput) nameInput.addEventListener('input', validateName);
     if (emailInput) emailInput.addEventListener('input', validateEmail);
     if (phoneInput) phoneInput.addEventListener('input', validatePhone);
     if (messageInput) messageInput.addEventListener('input', validateMessage);
 
-    // Character counter for message
     if (messageInput) {
         const charCounter = document.createElement('div');
         charCounter.className = 'char-counter';
@@ -515,22 +652,13 @@ document.addEventListener('DOMContentLoaded', function () {
         messageInput.addEventListener('input', () => {
             const currentLength = messageInput.value.length;
             charCounter.textContent = `${currentLength}/1000 characters`;
-            
-            if (currentLength > 900) {
-                charCounter.style.color = 'var(--warning-color)';
-            } else if (currentLength > 950) {
-                charCounter.style.color = 'var(--error-color)';
-            } else {
-                charCounter.style.color = '#8892b0';
-            }
+            charCounter.style.color = currentLength > 950 ? 'var(--error-color)' : currentLength > 900 ? 'var(--warning-color)' : '#8892b0';
         });
     }
 
-    // Form submission
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const isNameValid = validateName();
             const isEmailValid = validateEmail();
             const isPhoneValid = validatePhone();
@@ -538,15 +666,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const isSubjectValid = validateSubject();
 
             if (isNameValid && isEmailValid && isPhoneValid && isMessageValid && isSubjectValid) {
-                // Show loading state
                 const originalText = submitBtn.innerHTML;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 submitBtn.disabled = true;
 
                 try {
                     const formData = new FormData(contactForm);
-                    
-                    // Add timestamp and additional info
                     formData.append('timestamp', new Date().toISOString());
                     formData.append('user_agent', navigator.userAgent);
                     formData.append('referrer', document.referrer || 'Direct');
@@ -554,20 +679,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     const response = await fetch(contactForm.action, {
                         method: 'POST',
                         body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        headers: { 'Accept': 'application/json' }
                     });
 
                     if (response.ok) {
                         showFormStatus('🎉 Message sent successfully! I\'ll get back to you within 24 hours.', 'success');
                         contactForm.reset();
-                        
-                        // Reset character counter
                         const charCounter = document.querySelector('.char-counter');
                         if (charCounter) charCounter.textContent = '0/1000 characters';
-                        
-                        // Google Analytics event (if implemented)
                         if (typeof gtag !== 'undefined') {
                             gtag('event', 'form_submit', {
                                 event_category: 'Contact',
@@ -581,7 +700,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.error('Form submission error:', error);
                     showFormStatus('❌ There was an error sending your message. Please try again or contact me directly.', 'error');
                 } finally {
-                    // Reset button state
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                 }
@@ -591,7 +709,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Auto-save form data to localStorage (privacy-friendly)
+    // Auto-save form data to localStorage
     const formInputs = [nameInput, emailInput, phoneInput, companyInput, messageInput];
     const formKey = 'portfolio_contact_form_backup';
 
@@ -602,7 +720,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 formData[input.name || input.id] = input.value.trim();
             }
         });
-        
         if (Object.keys(formData).length > 0) {
             localStorage.setItem(formKey, JSON.stringify(formData));
         }
@@ -628,10 +745,7 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.removeItem(formKey);
     }
 
-    // Load saved data on page load
     loadFormData();
-
-    // Save data on input (debounced)
     let saveTimeout;
     formInputs.forEach(input => {
         if (input) {
@@ -642,7 +756,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Clear saved data on successful submission
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             if (!e.defaultPrevented) {
@@ -662,22 +775,14 @@ document.addEventListener('DOMContentLoaded', function () {
         function updateScrollButtons() {
             const isAtStart = container.scrollLeft <= 0;
             const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
-            
             leftBtn.classList.toggle('hidden', isAtStart);
             rightBtn.classList.toggle('hidden', isAtEnd);
         }
 
         container.addEventListener('scroll', updateScrollButtons);
-        
-        leftBtn.addEventListener('click', () => {
-            container.scrollBy({ left: -350, behavior: 'smooth' });
-        });
-        
-        rightBtn.addEventListener('click', () => {
-            container.scrollBy({ left: 350, behavior: 'smooth' });
-        });
+        leftBtn.addEventListener('click', () => container.scrollBy({ left: -350, behavior: 'smooth' }));
+        rightBtn.addEventListener('click', () => container.scrollBy({ left: 350, behavior: 'smooth' }));
 
-        // Touch/swipe support for mobile
         let isDown = false;
         let startX;
         let scrollLeft;
@@ -707,10 +812,7 @@ document.addEventListener('DOMContentLoaded', function () {
             container.scrollLeft = scrollLeft - walk;
         });
 
-        // Initial button state
         updateScrollButtons();
-        
-        // Update on resize
         const resizeObserver = new ResizeObserver(updateScrollButtons);
         resizeObserver.observe(container);
     }
@@ -732,7 +834,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Three.js Background Animation (Enhanced)
+    // Three.js Background Animation
     const canvas = document.getElementById('bg-canvas');
     if (canvas && typeof THREE !== 'undefined') {
         const scene = new THREE.Scene();
@@ -741,62 +843,44 @@ document.addEventListener('DOMContentLoaded', function () {
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Create particles
         const geometry = new THREE.BufferGeometry();
-        const particlesCount = window.innerWidth < 768 ? 2000 : 5000; // Fewer particles on mobile
+        const particlesCount = window.innerWidth < 768 ? 2000 : 5000;
         const posArray = new Float32Array(particlesCount * 3);
-        
         for (let i = 0; i < particlesCount * 3; i++) {
             posArray[i] = (Math.random() - 0.5) * (Math.random() * 200);
         }
-        
         geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        
         const material = new THREE.PointsMaterial({
             size: 0.005,
             color: 0x64ffda,
             transparent: true,
             opacity: 0.6
         });
-        
         const particlesMesh = new THREE.Points(geometry, material);
         scene.add(particlesMesh);
-        
         camera.position.z = 10;
 
-        // Mouse interaction
         let mouseX = 0;
         let mouseY = 0;
-        
         document.addEventListener('mousemove', (e) => {
             mouseX = (e.clientX / window.innerWidth) * 2 - 1;
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
         });
 
-        // Animation loop
         function animate() {
             requestAnimationFrame(animate);
-            
-            // Rotate particles
-            particlesMesh.rotation.x += 0.0005;
-            particlesMesh.rotation.y += 0.0008;
-            
-            // Mouse interaction
-            particlesMesh.rotation.x += mouseY * 0.00005;
-            particlesMesh.rotation.y += mouseX * 0.00005;
-            
+            particlesMesh.rotation.x += 0.0005 + mouseY * 0.00005;
+            particlesMesh.rotation.y += 0.0008 + mouseX * 0.00005;
             renderer.render(scene, camera);
         }
         animate();
 
-        // Handle resize
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Pause animation when tab is not visible (performance optimization)
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 renderer.setAnimationLoop(null);
@@ -806,7 +890,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Vanilla Tilt for Skills Section (Enhanced)
+    // Vanilla Tilt for Skills Section
     if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll('.skill-category'), {
             max: 15,
@@ -816,16 +900,12 @@ document.addEventListener('DOMContentLoaded', function () {
             perspective: 1000,
             transition: true
         });
-
-        // Tilt for value cards
         VanillaTilt.init(document.querySelectorAll('.value-card'), {
             max: 10,
             speed: 300,
             glare: true,
             'max-glare': 0.2
         });
-
-        // Tilt for project cards
         VanillaTilt.init(document.querySelectorAll('.showcase-card'), {
             max: 8,
             speed: 200,
@@ -841,7 +921,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const target = entry.target;
                 const finalValue = target.textContent;
                 const numericValue = parseFloat(finalValue.replace(/[^0-9.]/g, ''));
-                
                 if (!isNaN(numericValue)) {
                     animateCounter(target, 0, numericValue, finalValue, 2000);
                 }
@@ -849,14 +928,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }, { threshold: 0.5 });
-
     countElements.forEach(el => countObserver.observe(el));
 
     function animateCounter(element, start, end, originalText, duration) {
         const range = end - start;
-        const increment = range / (duration / 16); // 60fps
+        const increment = range / (duration / 16);
         let current = start;
-        
         const timer = setInterval(() => {
             current += increment;
             if (current >= end) {
@@ -880,10 +957,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
     images.forEach(img => imageObserver.observe(img));
 
-    // Add fade-in CSS for images
     const style = document.createElement('style');
     style.textContent = `
         img[loading="lazy"] {
@@ -896,16 +971,12 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     document.head.appendChild(style);
 
-    // Service Worker for offline functionality (optional)
+    // Service Worker for offline functionality
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
-                .then(registration => {
-                    console.log('SW registered: ', registration);
-                })
-                .catch(registrationError => {
-                    console.log('SW registration failed: ', registrationError);
-                });
+                .then(registration => console.log('SW registered: ', registration))
+                .catch(registrationError => console.log('SW registration failed: ', registrationError));
         });
     }
 
@@ -916,8 +987,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const perfData = window.performance.timing;
                 const loadTime = perfData.loadEventEnd - perfData.navigationStart;
                 console.log(`Page load time: ${loadTime}ms`);
-                
-                // Send to analytics if needed
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'timing_complete', {
                         name: 'load',
@@ -928,7 +997,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Add some Easter eggs for developers
+    // Easter egg for developers
     console.log(`
     ╔═══════════════════════════════════════╗
     ║                                       ║
@@ -942,22 +1011,4 @@ document.addEventListener('DOMContentLoaded', function () {
     ║                                       ║
     ╚═══════════════════════════════════════╝
     `);
-
-    // Add a secret keyboard shortcut (Ctrl+Shift+P) for portfolio stats
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.shiftKey && e.key === 'P') {
-            const stats = {
-                'Portfolio Version': '2.0.0',
-                'Build Date': new Date().toLocaleDateString(),
-                'Technologies': ['HTML5', 'CSS3', 'JavaScript', 'Three.js'],
-                'Lines of Code': '~2000+',
-                'Load Time': `${window.performance ? window.performance.timing.loadEventEnd - window.performance.timing.navigationStart : 'N/A'}ms`,
-                'Screen Size': `${window.innerWidth}x${window.innerHeight}`,
-                'User Agent': navigator.userAgent.substring(0, 50) + '...'
-            };
-            
-            console.table(stats);
-            alert('Portfolio stats logged to console! 📊');
-        }
-    });
 });
