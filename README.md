@@ -24,7 +24,7 @@ Key Highlights
 📊 Dynamic skill progress indicators
 🎨 Smooth animations and micro-interactions
 📱 Mobile-first responsive design
-⚡ Performance optimized (90+ Lighthouse score)
+⚡ Performance optimized 
 🔍 SEO optimized for better visibility
 💼 Recruiter-focused content structure
 
@@ -100,11 +100,6 @@ pravin-portfolio/
 │
 └── sw.js                   # Service worker for offline support
 
-🚀 Installation
-Quick Start
-Clone or Download
-git clone https://github.com/pravinrokade/enhanced-portfolio.git
-cd enhanced-portfolio
 
 Open in Browser
 # Or simply open index.html in your browser
@@ -285,8 +280,6 @@ Service Worker technology for offline functionality
 
 📈 Future Enhancements
 
-Dark mode toggle
-Multi-language support
 Advanced project filtering
 Advanced analytics dashboard
 Progressive Web App features
