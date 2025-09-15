@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Typing Animation for Hero Section
-    const texts = ['Full Stack Developer', 'Mobile App Developer', 'Tech Enthusiast', 'Problem Solver', 'Team Leader'];
+    const texts = ['Full Stack Developer', 'Web Developer', 'Mobile App Developer','Tech Enthusiast', 'Problem Solver', 'Team Leader'];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
